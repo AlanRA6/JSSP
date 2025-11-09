@@ -33,11 +33,13 @@ class JSSPSolver:
         """
         # Estructuras de datos para el scheduling
         schedule = []  # Operaciones programadas
+
+        # Arregkos de control
         machine_available = [0] * self.num_machines  # Tiempo disponible de cada máquina
         job_progress = [0] * self.num_jobs  # Próxima operación de cada trabajo
         job_available = [0] * self.num_jobs  # Tiempo disponible de cada trabajo
         
-        # Total de operaciones a programar
+        # Total de operaciones a programar (3 + 3 + 3 = 9)
         total_operations = sum(len(job) for job in self.jobs)
         
         # Bucle principal: programar todas las operaciones
@@ -45,12 +47,14 @@ class JSSPSolver:
             # Paso 1: Identificar operaciones disponibles
             available_ops = []
             
-            for job_id in range(self.num_jobs):
-                op_index = job_progress[job_id]
+            for job_id in range(self.num_jobs): # J1, J2, J3
+                op_index = job_progress[job_id] # Que operacion sigue?
                 
                 # Verificar si el trabajo tiene operaciones pendientes
                 if op_index < len(self.jobs[job_id]):
                     machine, duration = self.jobs[job_id][op_index]
+
+                    # Agregar a disponibles
                     available_ops.append({
                         'job': job_id,
                         'operation': op_index,
@@ -200,9 +204,18 @@ def compare_rules(jobs: List[List[Tuple[int, int]]]):
     
     solver = JSSPSolver(jobs)
     
+    # Aqui se ejecuta cada regla
     for rule in rules:
-        schedule, makespan = solver.solve(rule)
-        results[rule] = {'schedule': schedule, 'makespan': makespan}
+        # Resolver con esta regla especifica
+        schedule, makespan = solver.solve(rule) # llamada independiente
+
+        # Guardar resultados de eesta regla
+        results[rule] = {
+            'schedule': schedule,
+            'makespan': makespan
+        }
+
+        # Imprimir resultados de esta regla
         solver.print_schedule(schedule, makespan, rule)
     
     # Resumen comparativo
@@ -222,7 +235,7 @@ def compare_rules(jobs: List[List[Tuple[int, int]]]):
     
     # Identificar mejor regla
     best_rule = min(results, key=lambda r: results[r]['makespan'])
-    print(f"\n🏆 MEJOR REGLA: {best_rule} con makespan = {results[best_rule]['makespan']}")
+    print(f"\n MEJOR REGLA: {best_rule} con makespan = {results[best_rule]['makespan']}")
     
     # Generar gráficas
     print(f"\n{'='*70}")
@@ -275,5 +288,5 @@ if __name__ == "__main__":
     print("Simulación completada exitosamente")
     print("="*70)
     
-    # Mostrar gráficas (comentar si no quieres que se abran automáticamente)
-    plt.show()
+    # Mostrar gráficas (comentar para que no se abran automáticamente)
+    #plt.show()
