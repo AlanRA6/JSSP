@@ -1,0 +1,103 @@
+======================================================================
+               COMPARACIÓN DE REGLAS DE PRIORIDAD
+                    Job Shop Scheduling Problem
+======================================================================
+
+INSTANCIA DEL PROBLEMA (3 trabajos × 3 máquinas):
+----------------------------------------------------------------------
+Trabajo 1: M0(3) → M1(2) → M2(2)
+Trabajo 2: M0(2) → M2(1) → M1(4)
+Trabajo 3: M1(4) → M2(3) → M0(2)
+
+============================================================
+REGLA: FIFO
+============================================================
+Makespan: 21 unidades de tiempo
+
+Máquina    Trabajo    Operación    Inicio     Fin        Duración  
+------------------------------------------------------------
+M0         J1         Op1           0          3          3
+M0         J2         Op1           3          5          2
+M0         J3         Op3           19         21         2
+M1         J1         Op2           3          5          2
+M1         J2         Op3           8          12         4
+M1         J3         Op1           12         16         4
+M2         J1         Op3           5          7          2
+M2         J2         Op2           7          8          1
+M2         J3         Op2           16         19         3
+
+============================================================
+REGLA: SPT
+============================================================
+Makespan: 20 unidades de tiempo
+
+Máquina    Trabajo    Operación    Inicio     Fin        Duración
+------------------------------------------------------------
+M0         J2         Op1           0          2          2
+M0         J1         Op1           2          5          3
+M0         J3         Op3           18         20         2
+M1         J1         Op2           5          7          2
+M1         J2         Op3           7          11         4
+M1         J3         Op1           11         15         4
+M2         J2         Op2           2          3          1
+M2         J1         Op3           7          9          2
+M2         J3         Op2           15         18         3
+
+============================================================
+REGLA: LPT
+============================================================
+Makespan: 14 unidades de tiempo
+
+Máquina    Trabajo    Operación    Inicio     Fin        Duración
+------------------------------------------------------------
+M0         J1         Op1           0          3          3
+M0         J2         Op1           3          5          2
+M0         J3         Op3           7          9          2
+M1         J3         Op1           0          4          4
+M1         J1         Op2           4          6          2
+M1         J2         Op3           10         14         4
+M2         J3         Op2           4          7          3
+M2         J1         Op3           7          9          2
+M2         J2         Op2           9          10         1
+
+======================================================================
+                         RESUMEN COMPARATIVO
+======================================================================
+
+Regla           Makespan        Diferencia vs Mejor
+----------------------------------------------------------------------
+
+Regla           Makespan        Diferencia vs Mejor
+
+
+Regla           Makespan        Diferencia vs Mejor
+----------------------------------------------------------------------
+
+Regla           Makespan        Diferencia vs Mejor
+----------------------------------------------------------------------
+
+Regla           Makespan        Diferencia vs Mejor
+
+
+
+
+
+Regla           Makespan        Diferencia vs Mejor
+----------------------------------------------------------------------
+FIFO            21              +7
+SPT             20              +6
+LPT             14              ÓPTIMO
+
+ MEJOR REGLA: LPT con makespan = 14
+
+======================================================================
+Generando diagramas de Gantt...
+======================================================================
+Diagrama guardado como: gantt_FIFO.png
+Diagrama guardado como: gantt_SPT.png
+Diagrama guardado como: gantt_LPT.png
+Gráfica comparativa guardada como: comparacion_makespans.png
+
+======================================================================
+Simulación completada exitosamente
+======================================================================

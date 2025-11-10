@@ -34,7 +34,7 @@ class JSSPSolver:
         # Estructuras de datos para el scheduling
         schedule = []  # Operaciones programadas
 
-        # Arregkos de control
+        # Arreglos de control
         machine_available = [0] * self.num_machines  # Tiempo disponible de cada máquina
         job_progress = [0] * self.num_jobs  # Próxima operación de cada trabajo
         job_available = [0] * self.num_jobs  # Tiempo disponible de cada trabajo
